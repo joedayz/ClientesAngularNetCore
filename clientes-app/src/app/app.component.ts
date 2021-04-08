@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'clientes-app';
+
+  curso = "Angular y NetCore";
+
+  profesor = "Jose Diaz";
+
+
 }
