@@ -17,6 +17,7 @@ namespace carbackend
 {
     public class Startup
     {
+        readonly string MyPolicy = "_myPolicy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -36,13 +37,13 @@ namespace carbackend
 
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(
+                options.AddPolicy(name: MyPolicy,
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200",
-                                            "http://www.contoso.com")
-                                    .WithHeaders(HeaderNames.ContentType, "application/json")
-                                .WithMethods("POST", "PUT", "DELETE", "GET");
+                        builder.WithOrigins("http://localhost:4200"
+
+                            )
+                            .AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
                     });
             });
         }
@@ -58,7 +59,7 @@ namespace carbackend
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseCors();
+            app.UseCors(MyPolicy);
 
 
             app.UseEndpoints(endpoints =>
