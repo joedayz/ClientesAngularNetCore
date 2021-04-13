@@ -3,6 +3,8 @@
 # compiled output
 /bin
 /.idea
+/obj
+
 
 # System Files
 .DS_Store
